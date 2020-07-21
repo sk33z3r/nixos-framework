@@ -3,7 +3,7 @@
 let
 
   SERVICE = "ttrss";
-  APP_URL = "https://${DOMAIN}/tt-rss";
+  APP_URL = "https://${DOMAIN}";
   IP4 = "190";
   SQLIP = "191";
   FPMIP = "192";
@@ -16,8 +16,8 @@ in
   # Filesystem setup
   system.activationScripts."${SERVICE}" = {
     text = ''
-      mkdir -p ${DATA_DIR}/{app,db}
-      chown -R 1000:100 ${DATA_DIR}
+      mkdir -p ${DATA_DIR}/app
+      chown -R 1000:1000 ${DATA_DIR}/app
     '';
     deps = [];
   };
@@ -27,7 +27,7 @@ in
     ( import ./common.nix { SERVICE = "${SERVICE}"; } )
     ( import ../nginx/proxy.nix {
       DOMAIN = "${DOMAIN}";
-      DEST = "http://172.100.0.${IP4}:2015/";
+      DEST = "http://172.100.0.${IP4}:2015/tt-rss/";
       HOST_HEADER = "$host";
     } )
   ];
