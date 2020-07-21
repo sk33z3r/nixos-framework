@@ -17,6 +17,7 @@ in
   system.activationScripts."${SERVICE}" = {
     text = ''
       mkdir -p ${DATA_DIR}/{app,db}
+      chown -R 1000:100 ${DATA_DIR}
     '';
     deps = [];
   };
@@ -63,7 +64,7 @@ in
               - OWNER_GID=100
               - SELF_URL_PATH=${APP_URL}
             volumes:
-              - ${DATA_DIR}/app:/var/www/html
+              - ${DATA_DIR}/app:/var/www/html:rw
             depends_on:
               - db
             networks:
@@ -83,7 +84,7 @@ in
               - OWNER_GID=100
               - SELF_URL_PATH=${APP_URL}
             volumes:
-              - ${DATA_DIR}/app:/var/www/html
+              - ${DATA_DIR}/app:/var/www/html:rw
             depends_on:
               - app
             networks:
