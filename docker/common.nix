@@ -29,7 +29,7 @@
           down) $command down;;
           restart) $command restart;;
           build) $command build ${SERVICE};;
-          logs) $command logs -f;;
+          logs) $command logs -f --tail 100;;
           *) echo "E: Invalid Command"; exit 1;;
         esac
       '';
