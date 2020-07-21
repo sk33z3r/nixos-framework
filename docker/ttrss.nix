@@ -86,6 +86,8 @@ in
               - ${DATA_DIR}/app:/var/www/html
             depends_on:
               - app
+            networks:
+              blackrook:
             command: /updater.sh
           web:
             image: cthulhoo/ttrss-web
