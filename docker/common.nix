@@ -29,7 +29,7 @@
           down) $command down;;
           restart) $command restart;;
           build) $command build ${SERVICE};;
-          logs) docker logs -f --tail 25 ${SERVICE};;
+          logs) $command logs -f;;
           *) echo "E: Invalid Command"; exit 1;;
         esac
       '';

@@ -59,6 +59,7 @@
             tar zcvf /backups/mail_data-$(date +%Y-%m-%d).tar.gz /mailcow/data
             find /backups -mtime +90 -delete
           ;;
+          logs) $command logs -f;;
           *) echo "E: Invalid Command"; exit 1;;
         esac
       '';

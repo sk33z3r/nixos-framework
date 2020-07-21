@@ -50,7 +50,7 @@ in
           up) $command up -d --force-recreate;;
           update) $command pull; $command up -d --force-recreate;;
           down) $command down;;
-          logs) $command logs --tail 100 ${SERVICE};;
+          logs) $command logs -f;;
           *) echo "E: Invalid Command"; exit 1;;
         esac
       '';
