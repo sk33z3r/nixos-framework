@@ -61,7 +61,7 @@ in
               - DB_USER=${SERVICE}
               - DB_PASS=${SQL_PASS}
               - OWNER_UID=1000
-              - OWNER_GID=100
+              - OWNER_GID=1000
               - SELF_URL_PATH=${APP_URL}
             volumes:
               - ${DATA_DIR}/app:/var/www/html:rw
@@ -81,7 +81,7 @@ in
               - DB_USER=${SERVICE}
               - DB_PASS=${SQL_PASS}
               - OWNER_UID=1000
-              - OWNER_GID=100
+              - OWNER_GID=1000
               - SELF_URL_PATH=${APP_URL}
             volumes:
               - ${DATA_DIR}/app:/var/www/html:rw
