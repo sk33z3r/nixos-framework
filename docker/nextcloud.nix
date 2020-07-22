@@ -27,7 +27,7 @@ in
     ( import ./common.nix { SERVICE = "${SERVICE}"; } )
     ( import ../nginx/proxy.nix {
       DOMAIN = "${DOMAIN}";
-      DEST = "https://172.100.0.${IP4}/";
+      DEST = "http://172.100.0.${IP4}/";
       HOST_HEADER = "$host";
     } )
   ];
