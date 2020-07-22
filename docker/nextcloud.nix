@@ -18,6 +18,8 @@ in
     text = ''
       mkdir -p ${DATA_DIR}
       mkdir -p ${FILES_DIR}
+      chown -R 33:root ${FILES_DIR}
+      chmod -R 770 ${FILES_DIR}
     '';
     deps = [];
   };
@@ -76,6 +78,7 @@ in
               - MYSQL_USER=${SERVICE}
               - MYSQL_PASSWORD=${SQL_PASS}
               - MYSQL_HOST=172.100.0.${SQL_IP}
+              - NEXTCLOUD_TRUSTED_DOMAINS=${DOMAIN}
               - NEXTCLOUD_ADMIN_USER=${USERNAME}
               - NEXTCLOUD_ADMIN_PASSWORD=${PASSWORD}
               - NEXTCLOUD_DATA_DIR=/data
