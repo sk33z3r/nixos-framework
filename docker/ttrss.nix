@@ -3,7 +3,7 @@
 let
 
   SERVICE = "ttrss";
-  APP_URL = "https://${DOMAIN}";
+  APP_URL = "https://${DOMAIN}/tt-rss";
   IP4 = "190";
   SQLIP = "191";
   FPMIP = "192";
@@ -27,7 +27,7 @@ in
     ( import ./common.nix { SERVICE = "${SERVICE}"; } )
     ( import ../nginx/proxy.nix {
       DOMAIN = "${DOMAIN}";
-      DEST = "http://172.100.0.${IP4}:2015/tt-rss/";
+      DEST = "http://172.100.0.${IP4}:2015/";
       HOST_HEADER = "$host";
     } )
   ];
