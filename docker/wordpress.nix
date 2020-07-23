@@ -15,7 +15,7 @@
 
   # Generate common configs and scripts
   imports = [
-    ( import ./common.nix { SERVICE = "${CLIENT}"; } )
+    ( import ./scripts/helper.nix { SERVICE = "${CLIENT}"; } )
     ( import ../nginx/proxy.nix {
       DOMAIN = "${DOMAIN}";
       DEST = "http://172.100.0.${IP4}/";

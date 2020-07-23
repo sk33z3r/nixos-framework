@@ -2,6 +2,14 @@
 
 {
 
+  # Filesystem setup
+  system.activationScripts."${SERVICE}" = {
+    text = ''
+      mkdir -p /build
+    '';
+    deps = [];
+  };
+
   # Define common aliases
   programs.fish.shellAliases = {
     dry = "docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock moncho/dry";

@@ -23,7 +23,7 @@ in
   # Generate common configs and scripts
   imports = [
     ../nixos/packages/media.nix
-    ( import ./common.nix { SERVICE = "${SERVICE}"; } )
+    ( import ./scripts/helper.nix { SERVICE = "${SERVICE}"; } )
     ( import ../nginx/proxy.nix {
       DOMAIN = "${DOMAIN}";
       DEST = "https://172.100.0.${IP4}/";

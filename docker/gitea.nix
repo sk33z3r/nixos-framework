@@ -20,7 +20,7 @@ in
 
   # Generate common configs and scripts
   imports = [
-    ( import ./common.nix { SERVICE = "${SERVICE}"; } )
+    ( import ./scripts/helper.nix { SERVICE = "${SERVICE}"; } )
     ../nixos/webhook.nix
   ];
 

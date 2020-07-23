@@ -33,7 +33,7 @@ in
   # Generate common configs and scripts
   imports = [
     ../nixos/packages/media.nix
-    ( import ./common.nix { SERVICE = "${SERVICE}"; } )
+    ( import ./scripts/helper.nix { SERVICE = "${SERVICE}"; } )
   ];
 
   # Define docker-compose.yml

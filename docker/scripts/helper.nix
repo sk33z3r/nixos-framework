@@ -2,14 +2,6 @@
 
 {
 
-  # Filesystem setup
-  system.activationScripts."${SERVICE}" = {
-    text = ''
-      mkdir -p /build
-    '';
-    deps = [];
-  };
-
   # Script alias
   programs.fish.shellAliases = {
     "${SERVICE}" = "/etc/${SERVICE}.sh";
