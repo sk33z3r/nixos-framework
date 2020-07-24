@@ -15,7 +15,7 @@
 
   # Generate nginx config
   imports = [
-    ( import ../nginx/proxy.nix {
+    ( import ../../nginx/proxy.nix {
       DOMAIN = "${DOMAIN}";
       DEST = "http://127.0.0.1:6000/";
       HOST_HEADER = "$host";
