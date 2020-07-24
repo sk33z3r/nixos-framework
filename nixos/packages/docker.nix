@@ -3,7 +3,7 @@
 {
 
   # Filesystem setup
-  system.activationScripts."${SERVICE}" = {
+  system.activationScripts.docker-builds = {
     text = ''
       mkdir -p /build
     '';
