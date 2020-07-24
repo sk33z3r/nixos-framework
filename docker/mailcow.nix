@@ -19,8 +19,8 @@
 
   # Define cronjobs
   services.cron.systemCronJobs = [
-    "20 04 * * 0    root    /etc/mailcow-certs.sh"
-    "00 05 15 * *   root    /etc/mailcow.sh backup"
+    "20 04 * * 0    root    /etc/mailcow-certs.sh && gotify push 'Mailcow certs renewed and copied'"
+    "00 05 15 * *   root    /etc/mailcow.sh backup && gotify push 'Mailcow files backed up'"
   ];
 
   # Extra aliases
