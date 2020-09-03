@@ -72,7 +72,7 @@ case $1 in
             *) echo "New framework committed, but changes were not pushed.";;
         esac
     ;;
-    -l|--link)\
+    -l|--link)
         checkRoot
         FILENAME=$2
         while [[ $(echo $FILENAME | awk -F'.' '{print $2}') != "nix" ]] || [[ ! -f $dir/$FILENAME ]]; do read -p "ERROR: Invalid filename, try again: " FILENAME; done
