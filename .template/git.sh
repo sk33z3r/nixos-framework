@@ -42,6 +42,7 @@ case $1 in
         chown -R root:root /var/spool/nginx
         chmod -R 777 /var/spool/nginx
         systemctl restart nginx.service
+        systemctl restart syncthing.service
     ;;
     -u|--upgrade)
         checkRoot
@@ -50,6 +51,7 @@ case $1 in
         chown -R root:root /var/spool/nginx
         chmod -R 777 /var/spool/nginx
         systemctl restart nginx.service
+        systemctl restart syncthing.service
     ;;
     -f|--framework)
         cd $dir/framework
