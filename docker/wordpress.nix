@@ -5,9 +5,9 @@
   # Filesystem setup
   system.activationScripts."${DOMAIN}" = {
     text = ''
-      mkdir -p /var/www/html/${DOMAIN}/wp
+      mkdir -p /var/www/html/${DOMAIN}/wp/htdocs
       mkdir -p /var/www/html/${DOMAIN}/mysql
-      chown -R 100:101 /var/www/html/${DOMAIN}/wp
+      chown -R 100:101 /var/www/html/${DOMAIN}/wp/htdocs
       chown -R 999:999 /var/www/html/${DOMAIN}/mysql
     '';
     deps = [];
