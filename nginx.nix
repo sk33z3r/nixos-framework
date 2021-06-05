@@ -3,7 +3,7 @@
 {
 
   # Filesystem setup
-  systemd.services.nginx.serviceConfig.ReadWritePaths = [ "/var/www/logs/" ];
+  systemd.services.nginx.serviceConfig.ReadWritePaths = [ "/var/www/" ];
 
   system.activationScripts = {
     nginx = {
