@@ -6,10 +6,15 @@
   system.activationScripts = {
     nginx = {
       text = ''
+        mkdir -p /run/nginx
+        touch /run/nginx/nginx.pid
         mkdir -p /var/www/html
-        mkdir -p /var/www/logs
+        mkdir -p /www/logs
         mkdir -p /var/www/_letsencrypt
         chown -R root:root /var/www
+        chmod -R 755 /var/www
+        chown -R root:root /www/logs
+        chmod -R 755 /www/logs
         mkdir -p /etc/ssl/certs
       '';
       deps = [];
@@ -90,7 +95,7 @@
       text = ''
         #!/usr/bin/env bash
         # Set script variables
-        logPath="/var/www/logs"
+        logPath="/www/logs"
         date=$(date +"%Y%m%d")
         # Change log name
         mv -f $logPath/access.log $logPath/access.log.$date
@@ -151,8 +156,8 @@
         '\"$request\" $status $body_bytes_sent '
         '\"$http_referer\" \"$http_user_agent\"';
 
-      access_log /var/www/logs/access.log anonymized;
-      error_log /var/www/logs/error.log warn;
+      access_log /www/logs/access.log anonymized;
+      error_log /www/logs/error.log warn;
 
       # SSL
       ssl_session_timeout 1d;
