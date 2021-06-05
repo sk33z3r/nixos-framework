@@ -27,11 +27,8 @@ case $1 in
             exit 1
         fi
         ver=$2
-        sudo nix-channel --add https://nixos.org/channels/nixos-$ver nixos
-        if sudo nixos-rebuild switch --upgrade; then
-            read -p "Hit enter when you're ready to reboot"
-            sudo reboot now
-        fi
+        nix-channel --add https://nixos.org/channels/nixos-$ver nixos
+        sudo nixos-rebuild switch --upgrade
     ;;
     *) echo -e "\nUsage: $0 [switch|upgrade|edit]\n       $0 --link <name>\n       $0 --dist-upgrade <version>\n"; exit 1;;
 esac
