@@ -8,6 +8,8 @@
   system.activationScripts = {
     nginx = {
       text = ''
+        mkdir -p /run/nginx
+        touch /run/nginx/nginx.pid
         mkdir -p /var/www/html
         mkdir -p /var/www/logs
         mkdir -p /var/www/_letsencrypt
