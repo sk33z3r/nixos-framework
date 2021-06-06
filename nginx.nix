@@ -111,7 +111,7 @@
     enable = true;
     user = "root";
     group = "root";
-    package = pkgs.nginx;
+    package = pkgs.nginxMainline;
     statusPage = false;
     appendConfig = "
       worker_processes auto;
