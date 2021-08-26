@@ -3,7 +3,26 @@
 {
 
   # Filesystem setup
-  systemd.services.nginx.serviceConfig.ReadWritePaths = [ "/var/www/" "/run/" ];
+  systemd.services.nginx.serviceConfig = {
+    ReadWritePaths = [ "/var/www/" "/run/" "/var/cache/nginx/" "/var/logs/nginx/" ];
+    SystemCallFilter = lib.mkForce "";
+    #NoNewPrivileges = lib.mkForce false;
+    #ProtectSystem = lib.mkForce "";
+    #ProtectHome = lib.mkForce false;
+    #PrivateTmp = lib.mkForce false;
+    #PrivateDevices = lib.mkForce false;
+    #ProtectHostname = lib.mkForce false;
+    #ProtectKernelTunables = lib.mkForce false;
+    #ProtectKernelModules = lib.mkForce false;
+    #ProtectControlGroups = lib.mkForce false;
+    #LockPersonality = lib.mkForce false;
+    RestrictRealtime = lib.mkForce false;
+    RestrictSUIDSGID = lib.mkForce false;
+    #PrivateMounts = lib.mkForce false;
+    #SystemCallArchitectures = lib.mkForce "";
+    #MemoryDenyWriteExecute = lib.mkForce "";
+    #UMask = lib.mkForce "0002";
+  };
 
   system.activationScripts = {
     nginx = {
@@ -13,6 +32,7 @@
         mkdir -p /var/www/_letsencrypt
         chown -R root:root /var/www
         chmod -R 755 /var/www
+        chmod -R 775 /var/cache/nginx
         mkdir -p /etc/ssl/certs
       '';
       deps = [];
@@ -116,6 +136,7 @@
     appendConfig = "
       worker_processes auto;
       worker_rlimit_nofile 65535;
+      user root root;
     ";
     eventsConfig = "
       multi_accept on;
