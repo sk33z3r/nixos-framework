@@ -4,7 +4,7 @@
 
   # Filesystem setup
   systemd.services.nginx.serviceConfig = {
-    ReadWritePaths = [ "/var/www/" "/run/" "/var/cache/nginx/" "/var/logs/nginx/" ];
+    ReadWritePaths = [ "/var/www/" "/run/" "/var/cache/nginx/" ];
     SystemCallFilter = lib.mkForce "";
     #NoNewPrivileges = lib.mkForce false;
     #ProtectSystem = lib.mkForce "";
