@@ -48,24 +48,22 @@ in
     };
   };
 
-  environment.etc = {
-    # Workaround transmission issue by appending an ipv4 host in /etc/hosts
-    hosts.text = ''
-      87.98.162.88 portcheck.transmissionbt.com
+  # Workaround transmission issue by appending an ipv4 host in /etc/hosts. Disabled when upgrading to 21.11, conflict when building. Leaving for posterity.
+  #environment.etc.hosts.text = ''
+  #  87.98.162.88 portcheck.transmissionbt.com
+  #'';
+  # transmission helper script
+  environment.etc."transmission.sh" = {
+    mode = "0755";
+    text = ''
+      #!/usr/bin/env bash
+      case $1 in
+        up) systemctl restart transmission.service;;
+        down) systemctl stop transmission.service;;
+        status) systemctl status transmission.service;;
+        *) echo "E: Invalid Command"; exit 1;;
+      esac
     '';
-    # transmission helper script
-    "transmission.sh" = {
-      mode = "0755";
-      text = ''
-        #!/usr/bin/env bash
-        case $1 in
-          up) systemctl restart transmission.service;;
-          down) systemctl stop transmission.service;;
-          status) systemctl status transmission.service;;
-          *) echo "E: Invalid Command"; exit 1;;
-        esac
-      '';
-    };
   };
 
   # Generate nginx config
