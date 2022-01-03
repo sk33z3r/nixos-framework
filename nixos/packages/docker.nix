@@ -33,6 +33,19 @@
     ];
   };
 
+  # Custom automated docker image update loop
+  environment.etc."docker-update.sh" = {
+    uid = 1000;
+    gid = 100;
+    mode = "0755";
+    text = ''
+      #!/usr/bin/env bash
+      for i in `docker ps | awk '{print $(NF)}' | grep -v mailcow | grep -v terraria | grep -v "\-db" | grep -v _mysql | grep -v NAMES`; do
+        $i update
+      done
+    '';
+  };
+
   # Setup Docker
   virtualisation.docker.enable = true;
   virtualisation.docker.liveRestore = false;
