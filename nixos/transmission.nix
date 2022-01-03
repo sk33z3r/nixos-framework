@@ -34,7 +34,6 @@ in
     user = "root";
     group = "root";
     home = "${WORKDIR}";
-    port = 8888;
     settings = {
       download-dir = "${DOWNLOADS}";
       incomplete-dir = "${WORKDIR}/.incomplete";
@@ -45,6 +44,7 @@ in
       rpc-authentication-required = true;
       rpc-password = "${WEB_PASS}";
       rpc-username = "${WEB_USER}";
+      rpc-port = 8888;
     };
   };
 
