@@ -151,7 +151,6 @@
       tcp_nopush on;
       tcp_nodelay on;
       log_not_found off;
-      types_hash_max_size 4096;
 
       # logging
       map $remote_addr $ip_anonym1 {
