@@ -15,4 +15,11 @@
     };
   };
 
+  users.users.nobody = {
+    isSystemUser = true;
+    createHome = false;
+    group  = "nobody";
+  };
+  users.groups.nobody = {};
+
 }
