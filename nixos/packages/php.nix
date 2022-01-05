@@ -3,7 +3,7 @@
 {
 
   services.phpfpm.pools.phpuser = {
-    user = phpuser;
+    user = "phpuser";
     settings = {
       "listen.owner" = config.services.nginx.user;
       "pm" = "dynamic";
@@ -22,8 +22,8 @@
   users.users.phpuser = {
     isSystemUser = true;
     createHome = true;
-    home = /var/www/html;
-    group  = phpuser;
+    home = "/var/www/html";
+    group  = "phpuser";
   };
   users.groups.phpgroup = {};
 
