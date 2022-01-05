@@ -30,9 +30,9 @@
             deny all;
         }
 
-        location / {
-          fastcgi_split_path_info ^(.+\.php)(/.+)$;
-          fastcgi_pass unix:${SOCKET};
+        location ~ \\.php$ {
+          fastcgi_pass  unix:${SOCKET};
+          fastcgi_index index.php;
           include ${NGINXPATH}/conf/fastcgi_params;
           include ${NGINXPATH}/conf/fastcgi.conf;
         }
