@@ -5,7 +5,7 @@
   services.phpfpm.pools.phpuser = {
     user = "phpuser";
     settings = {
-      "listen.owner" = "root";
+      "listen.owner" = config.services.nginx.user;
       "pm" = "dynamic";
       "pm.max_children" = 32;
       "pm.max_requests" = 500;

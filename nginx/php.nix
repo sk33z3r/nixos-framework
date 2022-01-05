@@ -1,4 +1,4 @@
-{ DOMAIN }:
+{ config, pkgs, DOMAIN, ... }:
 
 {
 
