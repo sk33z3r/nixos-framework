@@ -1,4 +1,11 @@
-{ config, pkgs, DOMAIN, ... }:
+DOMAIN: { config, pkgs, ... }:
+
+let
+
+  SOCKET = config.services.phpfpm.pools.phpuser.socket;
+  NGINXPATH = pkgs.nginx;
+
+in
 
 {
 
@@ -32,9 +39,9 @@
 
         location / {
           fastcgi_split_path_info ^(.+\.php)(/.+)$;
-          fastcgi_pass unix:${config.services.phpfpm.pools.phpuser.socket};
-          include ${pkgs.nginx}/conf/fastcgi_params;
-          include ${pkgs.nginx}/conf/fastcgi.conf;
+          fastcgi_pass unix:${SOCKET};
+          include ${NGINXPATH}/conf/fastcgi_params;
+          include ${NGINXPATH}/conf/fastcgi.conf;
         }
     }
   ";
