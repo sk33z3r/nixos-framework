@@ -1,11 +1,4 @@
-DOMAIN: { config, pkgs, ... }:
-
-let
-
-  SOCKET = config.services.phpfpm.pools.phpuser.socket;
-  NGINXPATH = pkgs.nginx;
-
-in
+{ DOMAIN, SOCKET, NGINXPATH }:
 
 {
 
