@@ -18,7 +18,7 @@
 
         server_name ${DOMAIN} www.${DOMAIN};
         root /var/www/html/${DOMAIN};
-        index index.php;
+        index index.php index.html;
 
         # SSL
         ssl_certificate             /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
