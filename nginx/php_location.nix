@@ -32,7 +32,7 @@
 
         # rewrite
         location ~ /${URI} {
-            return 307 https://${DEST};
+            return 307 https://${DEST}$request_uri;
         }
 
         location ~ \\.php$ {
