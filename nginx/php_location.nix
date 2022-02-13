@@ -32,7 +32,6 @@
 
         # rewrite
         location ~ /${URI} {
-            merge_slashes on;
             return 307 https://${DEST}$request_uri;
         }
 
