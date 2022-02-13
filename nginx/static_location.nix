@@ -26,8 +26,9 @@
         ssl_trusted_certificate     /etc/letsencrypt/live/${DOMAIN}/chain.pem;
 
         # rewrite
-        location ~ /${URI}/ {
-            return 307 https://${DEST}$uri;
+        location ~ /${URI} {
+            merge_slashes on;
+            return 307 https://${DEST}$request_uri;
         }
 
         # . files
