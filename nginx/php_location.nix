@@ -31,7 +31,7 @@
         }
 
         # rewrite
-        location ~ /${URI} {
+        location ~ /${URI}/ {
             return 307 https://${DEST}$request_uri;
         }
 
