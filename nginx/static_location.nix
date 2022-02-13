@@ -27,7 +27,7 @@
 
         # rewrite
         location ~ /${URI} {
-            return 307 https://${DEST}$request_uri;
+            rewrite ^/${URI}/(.*)$ https://${DEST}/$1;
         }
 
         # . files
