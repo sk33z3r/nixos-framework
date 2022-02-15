@@ -48,6 +48,8 @@
     tcptrack
     ncdu
     unzip
+    imagemagick
+    ffmpeg-full
   ];
 
   # Enable fail2ban
