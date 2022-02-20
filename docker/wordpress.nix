@@ -31,7 +31,7 @@
         services:
           mysql:
             image: mysql:5.7
-            container_name: ${CLIENT}_mysql
+            container_name: ${CLIENT}-db
             volumes:
               - /var/www/html/${DOMAIN}/mysql:/var/lib/mysql:rw
             environment:

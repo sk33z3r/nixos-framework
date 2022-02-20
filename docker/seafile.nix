@@ -39,7 +39,7 @@ in
         services:
           db:
             image: mariadb:10.1
-            container_name: ${SERVICE}-mysql
+            container_name: ${SERVICE}-db
             environment:
               - MYSQL_ROOT_PASSWORD=${SQL_PASS}
               - MYSQL_LOG_CONSOLE=true

@@ -40,7 +40,7 @@ in
         services:
           db:
             image: postgres:12-alpine
-            container_name: ${SERVICE}-psql
+            container_name: ${SERVICE}-db
             restart: unless-stopped
             volumes:
               - ${DATA_DIR}/db:/var/lib/postgresql/data

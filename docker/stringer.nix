@@ -37,7 +37,7 @@ in
         services:
           db:
             image: postgres:9.5-alpine
-            container_name: ${SERVICE}-psql
+            container_name: ${SERVICE}-db
             restart: always
             volumes:
               - ${DATA_DIR}:/var/lib/postgresql/data
