@@ -29,6 +29,7 @@ Usage: $0 [argument]
   -u, --upgrade         | pulls from git, forces package upgrades while switching
   -f, --framework       | pulls and commits the latest framework from master
   -l, --link [name.nix] | links the configuration.nix file
+  -d, --docker          | updates all containers running on the server
   -h, --help            | this help message
 
 EOF
@@ -90,6 +91,12 @@ case $1 in
         ln -s $dir/$FILENAME /etc/nixos/configuration.nix
         echo "New config linked"
         ls -l /etc/nixos/configuration.nix
+    ;;
+    -d|--docker)
+        checkRoot
+        for container in $(docker ps | awk '{print $(NF)}' | grep -v "mailcow\|python\|mongodb\|terraria\|NAMES\|\-db"); do
+            $container update
+        done
     ;;
     -h|--help) usage;;
     *) gitPull;;
