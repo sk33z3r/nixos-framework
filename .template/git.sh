@@ -95,7 +95,7 @@ case $1 in
     -d|--docker)
         checkRoot
         for container in $(docker ps | awk '{print $(NF)}' | grep -v "mailcow\|python\|mongodb\|terraria\|NAMES\|\-db"); do
-            $container update
+            /etc/$container.sh update
         done
     ;;
     -h|--help) usage;;
