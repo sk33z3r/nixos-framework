@@ -24,7 +24,7 @@ in
     ( import ./scripts/helper.nix { SERVICE = "${SERVICE}"; } )
     ( import ../nginx/proxy.nix {
       DOMAIN = "${DOMAIN}";
-      DEST = "https://172.100.0.${IP4}:8080/";
+      DEST = "http://172.100.0.${IP4}:8080/";
       HOST_HEADER = "$host";
     } )
   ];
@@ -43,7 +43,7 @@ in
               - GID=100
             volumes:
               - ${DATA_DIR}:/www/assets
-            restart: always
+            restart: unless-stopped
             networks:
               blackrook:
                 ipv4_address: 172.100.0.${IP4}
