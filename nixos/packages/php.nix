@@ -2,13 +2,6 @@
 
 {
 
-  # Extra packages
-  environment.systemPackages = with pkgs; [
-    php.withExtensions ({ enabled, all }: with all; [
-      imagick openssl zip mongodb
-    ])
-  ];
-
   services.phpfpm.pools.mypool = {
     user = "phpuser";
     settings = {
