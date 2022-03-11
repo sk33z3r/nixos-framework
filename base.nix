@@ -47,6 +47,7 @@
     inotify-tools
     tcptrack
     ncdu
+    zip
     unzip
     imagemagick
   ];
