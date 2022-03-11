@@ -3,9 +3,11 @@
 {
 
   # Extra packages
-  #environment.systemPackages = with pkgs; [
-  #  php74Packages.mongodb
-  #];
+  environment.systemPackages = with pkgs; [
+    php.withExtensions ({ enabled, all }: with all; [
+      imagick openssl zip mongodb
+    ])
+  ];
 
   services.phpfpm.pools.mypool = {
     user = "phpuser";
@@ -18,9 +20,6 @@
       "pm.max_spare_servers" = 3;
       "pm.max_requests" = 500;
     };
-    #phpOptions = ''
-    #  extension=${pkgs.php74Packages.mongodb}/lib/php/extensions/mongodb.so
-    #'';
   };
 
   users.users.phpuser = {
