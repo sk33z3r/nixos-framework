@@ -25,7 +25,7 @@
         ssl_certificate_key         /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
         ssl_trusted_certificate     /etc/letsencrypt/live/${DOMAIN}/chain.pem;
 
-        location ~* /(?!index.php|.*\\.(gif|png|css|js|woff|svg|eot|jpg|jpeg|html|htm|zip)$) {
+        location ~* /(?!index.php|.*\\.(gif|png|css|js|woff|svg|eot|jpg|jpeg|html|htm|zip|csv|json)$) {
             rewrite ^/(.*)$ /index.php?page=$1;
         }
 
