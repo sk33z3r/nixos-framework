@@ -1,12 +1,12 @@
-{ USER, HOME_DIR }:
+{ USER, HOME_DIR, UID }:
 
 {
 
   # Define default non-root user
   users.users.${USER} = {
     isNormalUser = true;
-    uid = 1000;
-    extraGroups = [ "wheel" "networkmanager" ];
+    uid = ${UID};
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     home = "${HOME_DIR}";
   };
 
