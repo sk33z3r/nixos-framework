@@ -40,7 +40,7 @@ in
             restart: unless-stopped
             container_name: ${SERVICE}-db
             volumes:
-              - ${DATA_DIR}/mysql:/var/lib/mysql:rw
+              - database_volume:/var/lib/mysql
             environment:
               MYSQL_ROOT_PASSWORD: ${SQL_ROOT}
               MYSQL_USER: ${SERVICE}
@@ -64,12 +64,16 @@ in
               DATASOURCES_DEFAULT_PASSWORD: ${SQL_PASS}
               DATASOURCES_DEFAULT_DATABASE: ${SERVICE}
             volumes:
-              - ${DATA_DIR}/gpg:/etc/passbolt/gpg:rw
-              - ${DATA_DIR}/jwt:/etc/passbolt/jwt:rw
+              - gpg_volume:/etc/passbolt/gpg
+              - jwt_volume:/etc/passbolt/jwt
             command: ["/usr/bin/wait-for.sh", "-t", "0", "172.100.0.${SQL_IP}:3306", "--", "/docker-entrypoint.sh"]
             networks:
               blackrook:
                 ipv4_address: 172.100.0.${IP4}
+        volumes:
+          database_volume:
+          gpg_volume:
+          jwt_volume:
         networks:
           blackrook:
             name: blackrook
