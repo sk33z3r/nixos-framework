@@ -6,7 +6,7 @@ This repo is intended to be included as a submodule in other repositories as a l
 
 For templated derivations, you can import them in a machine's config and pass variables like this:
 
-```
+```nix
 imports = [
     ( import ./framework/nixos/syncthing.nix {
         DOMAIN = "example.tld";
@@ -26,12 +26,12 @@ Look at the first line of any `.nix` file for list of variables needed to build 
 
 Copy the `.template` directory and initialize as a new git repo with a submodule, like so:
 
-```
-$ cp ./.template /my/git/repos/clientname
+```shell
+$ cp -r ./.template /my/git/repos/clientname
 $ cd /my/git/repos/clientname
 $ git init
-$ git submodule init
-$ git submodule update
+$ git submodule add https://git.blackrookllc.com/black-rook-llc/nixos-framework.git framework
+$ git submodule update --init
 ```
 
 Now you should be able to follow `example.nix` to build machines. Keep in mind it's not an exhaustive example of every derivation that might exist in the repo. Best to check the first line of any `.nix` module you want to add for exactly which arguments you need to pass.
@@ -40,7 +40,7 @@ Once you've got your configs together and pulled to the machine and the default 
 
 ## Git Helper
 
-```
+```shell
 Usage: ./git.sh [argument]
 
                         | no argument runs git pull
@@ -55,6 +55,6 @@ Usage: ./git.sh [argument]
 
 Any time there is a new framework release, you can update it with the below command. This simply updates the submodule properly, then commits only that update to your repo.
 
-```
+```shell
 $ ./git.sh --framework
 ```
