@@ -1,4 +1,4 @@
-{ DOMAIN, VID_DIR, SQL_PASS, SQL_ROOT }:
+{ DOMAIN, SQL_PASS, SQL_ROOT }:
 
 let
 
