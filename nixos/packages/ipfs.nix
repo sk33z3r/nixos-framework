@@ -58,8 +58,12 @@
                     rm $upload/$f
                 done
             ;;
+            restart)
+                systemctl restart ipfs.service
+                chmod -R 755 /var/lib/ipfs
+            ;;
             *)
-                echo "Usage: $0 [dir|cid|stats|pins|add] {directory|cid}"
+                echo "Usage: $0 [dir|cid|stats|pins|add|restart] {directory|cid}"
             ;;
         esac
       '';
