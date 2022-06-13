@@ -35,24 +35,32 @@ Usage: $0 [argument]
 EOF
 }
 
+post_switch() {
+    if $(systemctl list-unit-files "nginx*" >/dev/null); then
+        chown -R root:root /var/spool/nginx
+        chmod -R 777 /var/spool/nginx
+        systemctl restart nginx.service
+    fi
+    if $(systemctl list-unit-files "syncthing*" >/dev/null); then
+        systemctl restart syncthing.service
+    fi
+    if $(systemctl list-unit-files "ipfs*" >/dev/null); then
+        chmod -R 755 /var/lib/ipfs
+    fi
+}
+
 case $1 in
     -s|--switch)
         checkRoot
         gitPull
         ./framework/nix.sh switch
-        chown -R root:root /var/spool/nginx
-        chmod -R 777 /var/spool/nginx
-        systemctl restart nginx.service
-        systemctl restart syncthing.service
+        post_switch
     ;;
     -u|--upgrade)
         checkRoot
         gitPull
         ./framework/nix.sh upgrade
-        chown -R root:root /var/spool/nginx
-        chmod -R 777 /var/spool/nginx
-        systemctl restart nginx.service
-        systemctl restart syncthing.service
+        post_switch
     ;;
     -f|--framework)
         cd $dir/framework
