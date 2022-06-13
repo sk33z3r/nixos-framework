@@ -58,7 +58,7 @@
   # SSHD Config
   services.openssh = {
     enable = true;
-    challengeResponseAuthentication = false;
+    kbdInteractiveAuthentication = false;
     passwordAuthentication = false;
     permitRootLogin = "no";
     ports = [ 8008 ];
@@ -73,6 +73,6 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
 
 }

@@ -19,7 +19,7 @@
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     docker
-    docker_compose
+    docker-compose
   ];
 
   # Setup cronjobs
