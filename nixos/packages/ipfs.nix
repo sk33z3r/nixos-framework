@@ -49,13 +49,16 @@
             ;;
             stats) ipfs stats repo -H;;
             pins) ipfs pin ls -t recursive;;
-            *)
+            add)
                 for f in $(ls $upload); do
                     echo "Adding $f..."
                     cid=$(ipfs add -Q $upload/$f)
                     ipfs pin add $cid
                     rm $upload/$f
                 done
+            ;;
+            *)
+                echo "Usage: $0 [dir|cid|stats|pins|add] {directory|cid}"
             ;;
         esac
       '';
