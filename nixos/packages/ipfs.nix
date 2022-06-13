@@ -11,6 +11,7 @@
   services.ipfs = {
     enable = true;
     gatewayAddress = "/ip4/0.0.0.0/tcp/9393";
+    autoMigrate = false;
   };
 
   # Extra aliases
