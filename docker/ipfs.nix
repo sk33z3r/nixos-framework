@@ -29,7 +29,7 @@ in
     ipfsh = "/etc/ipfs-helper.sh";
   };
 
-  # Scripts
+  # /etc files
   environment.etc = {
     "ipfs-helper.sh" = {
       mode = "0755";
@@ -40,10 +40,6 @@ in
         $command ipfs $@
       '';
     };
-  };
-
-  # Define docker-compose.yml
-  environment.etc = {
     "${SERVICE}.compose" = {
       text = ''
         version: '3.7'
