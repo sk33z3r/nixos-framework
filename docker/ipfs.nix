@@ -26,7 +26,7 @@ in
 
   # Extra aliases
   programs.fish.shellAliases = {
-    ipfs = "/etc/ipfs-helper.sh";
+    ipfsh = "/etc/ipfs-helper.sh";
   };
 
   # Scripts
