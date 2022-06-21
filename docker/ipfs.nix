@@ -37,7 +37,7 @@ in
         #!/usr/bin/env bash
         compose="/etc/${SERVICE}.compose"
         command="docker-compose -f $compose -p ${SERVICE}"
-        $command ipfs $@
+        $command ${SERVICE} ipfs $@
       '';
     };
     "${SERVICE}.compose" = {
