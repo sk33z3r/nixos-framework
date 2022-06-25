@@ -1,4 +1,4 @@
-{ DOMAIN }:
+{ config, pkgs, ... }:
 
 let
 
@@ -13,7 +13,7 @@ in
   # Filesystem setup
   system.activationScripts."${SERVICE}" = {
     text = ''
-      mkdir -p ${DATA_DIR}
+      mkdir -p ${COLLECTIONS_DIR}
     '';
     deps = [];
   };
@@ -65,7 +65,7 @@ in
             *) # run a command inside a self-destructing container
                 docker run -it --rm --name $name \
                     -v $name:/loopygen/.secrets \
-                    -v $PWD/collections:/loopygen/collections:rw \
+                    -v ${COLLECTIONS_DIR}:/loopygen/collections:rw \
                     $tag "$@"
             ;;
         esac

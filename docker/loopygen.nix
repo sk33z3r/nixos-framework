@@ -13,7 +13,7 @@ in
   # Filesystem setup
   system.activationScripts."${SERVICE}" = {
     text = ''
-      mkdir -p ${DATA_DIR}
+      mkdir -p ${COLLECTIONS_DIR}
     '';
     deps = [];
   };
@@ -70,7 +70,7 @@ in
             *) # run a command inside a self-destructing container
                 docker run -it --rm --name $name \
                     -v $name:/loopygen/.secrets \
-                    -v $PWD/collections:/loopygen/collections:rw \
+                    -v ${COLLECTIONS_DIR}:/loopygen/collections:rw \
                     $tag "$@"
             ;;
         esac
@@ -84,7 +84,7 @@ in
             image: sk33z3r/loopygen
             container_name: ${SERVICE}
             volumes:
-              - ${DATA_DIR}:/loopygen/collections
+              - ${COLLECTIONS_DIR}:/loopygen/collections
             networks:
               blackrook:
                 ipv4_address: 172.100.0.${IP4}
