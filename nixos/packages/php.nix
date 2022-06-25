@@ -19,6 +19,7 @@
     isSystemUser = true;
     createHome = false;
     group  = "phpuser";
+    extraGroups = [ "docker" ];
   };
   users.groups.phpuser = {};
 
