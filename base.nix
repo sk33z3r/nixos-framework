@@ -61,7 +61,6 @@
     kbdInteractiveAuthentication = false;
     passwordAuthentication = false;
     permitRootLogin = "no";
-    ports = [ 8008 ];
   };
 
   # Setup global user defaults
